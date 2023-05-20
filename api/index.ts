@@ -1,9 +1,8 @@
 import express from 'express'
-import { Router } from 'express'
+import { Router, Request, Response } from 'express'
 import { quote } from 'yahoo-finance'
 // import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Request } from 'express';
-import { Response } from 'express';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 // import { historical } from 'google-finance'
 
 const app = express()
@@ -12,6 +11,23 @@ const route = Router()
 
 app.use(route)
 // app.listen(port, () => console.log('Server running in ' + port))
+
+const allowCors = fn => async (req: VercelRequest, res: VercelResponse) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (req.method === 'OPTIONS') {
+        res.status(200).end()
+        return
+    }
+    return await fn(req, res)
+}
 
 route.get('/quotes', async (request: Request, response: Response) => {
     // const data = await historical({ symbols: ['NASDAQ:AAPL'], from: `2023-05-15`, to: `2023-05-19` });
@@ -31,4 +47,4 @@ route.get('/', (req, res) => {
     })
 });
 
-export default app;
+export default allowCors(app);
