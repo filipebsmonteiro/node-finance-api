@@ -1,10 +1,10 @@
 {
-    "name": "deploy-node-in-vercel",
+    "name": "node-google-finance",
     "version": 2,
     "public": true,
     "build": {
         "src": "api/index.js",
-        "use": "@vercel/node"
+        "use": "@now/node"
     },
     "routes": [
         {
