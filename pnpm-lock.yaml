@@ -15,6 +15,9 @@ devDependencies:
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
+  '@types/node':
+    specifier: ^20.2.1
+    version: 20.2.1
   '@vercel/node':
     specifier: ^2.14.3
     version: 2.14.3
@@ -166,7 +169,7 @@ packages:
   /@types/node-fetch@2.6.3:
     resolution: {integrity: sha512-ETTL1mOEdq/sxUtgtOhKjyB2Irra4cjxksvcMUR5Zr4n+PxVhsCD9WS46oPbHL3et9Zde7CNRr+WUNlcHvsX+w==}
     dependencies:
-      '@types/node': 14.18.33
+      '@types/node': 20.2.1
       form-data: 3.0.1
     dev: true
 
@@ -366,6 +369,10 @@ packages:
 
   /bluebird@3.5.1:
     resolution: {integrity: sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==}
+    dev: false
+
+  /bluebird@3.7.2:
+    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
     dev: false
 
   /body-parser@1.20.1:
@@ -1504,7 +1511,7 @@ packages:
     peerDependencies:
       request: ^2.34
     dependencies:
-      bluebird: 3.5.1
+      bluebird: 3.7.2
       request: 2.88.2
       request-promise-core: 1.1.4(request@2.88.2)
       stealthy-require: 1.1.1
@@ -1913,9 +1920,9 @@ packages:
   /yahoo-finance@0.3.8:
     resolution: {integrity: sha512-deegp8esgPls44nmL+4i6Zx/YT6oh9Wpwa9Oz9nRvTOAj1X3sTs25uf1gDsbrESuR+m72zouhemDy6s7RfahKg==}
     dependencies:
-      bluebird: 3.5.1
+      bluebird: 3.7.2
       debug: 2.6.9
-      lodash: 4.17.10
+      lodash: 4.17.21
       moment: 2.29.4
       moment-timezone: 0.5.43
       request: 2.88.2
